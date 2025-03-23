@@ -29,8 +29,8 @@ namespace MfGraphOrSomethingIdk
 			chart1.Series.Clear();
 			chart1.ChartAreas[0].Area3DStyle.Enable3D = false;
 
-			// Configure the angle axis (AxisX)
-			chart1.ChartAreas[0].AxisX.LabelStyle.Enabled = true; // Show angle labels
+            // Configure the angle axis (AxisX)
+            chart1.ChartAreas[0].AxisX.LabelStyle.Enabled = true; // Show angle labels
 			chart1.ChartAreas[0].AxisX.Interval = 30; // Set angle interval to 30 degrees
 			chart1.ChartAreas[0].AxisX.Minimum = 0; // Start angle at 0 degrees
 			chart1.ChartAreas[0].AxisX.Maximum = 360; // End angle at 360 degrees
@@ -44,10 +44,12 @@ namespace MfGraphOrSomethingIdk
 			// Add a series for the logarithmic spiral
 			Series spiralSeries = new Series("Logarithmic Spiral");
 			spiralSeries.ChartType = SeriesChartType.Polar;
-			chart1.Series.Add(spiralSeries);
+            spiralSeries.Color = Color.Red; // Change the line color
+            spiralSeries.BorderWidth = 2; // Set the line thickness
+            chart1.Series.Add(spiralSeries);
 
-			// Generate the logarithmic spiral data points
-			GenerateLogarithmicSpiral(spiralSeries);
+            // Generate the logarithmic spiral data points
+            GenerateLogarithmicSpiral(spiralSeries);
 		}
 
 		private void GenerateLogarithmicSpiral(Series series)
@@ -70,11 +72,21 @@ namespace MfGraphOrSomethingIdk
 				series.Points.AddXY(thetaDegrees, r);
 			}
 		}
-
+			
 		private void chart1_Click(object sender, EventArgs e)
 		{
 			// Optional: Regenerate the spiral on click if needed
 			GenerateLogarithmicSpiral(chart1.Series["Logarithmic Spiral"]);
 		}
-	}
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
